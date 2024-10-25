@@ -999,3 +999,44 @@ footer {
     padding-top: 40px; /* Adjust this for the rest */
     padding-bottom: 20px;
 }
+
+/* Featured Projects Responsive Layout */
+@media screen and (max-width: 768px) {
+    .featured-projects-grid {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .featured-project {
+        width: 90%; /* Adjusted width for single-column on mobile */
+    }
+
+    .featured-project img {
+        height: auto; /* Let the image height adapt naturally */
+    }
+}
+
+/* Hide regular nav items and show hamburger icon on smaller screens */
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide nav items */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu */
+        cursor: pointer;
+    }
+}
+
+/* Expand menu on click */
+.nav-expanded ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    right: 20px;
+    background-color: #203864;
+    padding: 10px;
+    border-radius: 5px;
+}

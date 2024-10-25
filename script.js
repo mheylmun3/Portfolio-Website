@@ -196,3 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
         firstSection.style.paddingTop = (headerHeight + 20) + 'px'; // Add 40px for extra space
     }
 });
+
+// JavaScript for the hamburger menu
+document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('header').classList.toggle('nav-expanded');
+});
