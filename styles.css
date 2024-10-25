@@ -1088,3 +1088,37 @@ footer {
         transition: transform 0.5s ease-in-out;
     }
 }
+
+/* Show desktop navigation only on larger screens */
+.desktop-nav {
+    display: block;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+/* Mobile navigation (hamburger) only appears on smaller screens */
+@media screen and (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    /* Mobile menu styling for when the hamburger is clicked */
+    .mobile-menu {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 60px; /* Adjust for header height */
+        right: 0;
+        background-color: #203864;
+        width: 100%;
+    }
+
+    .mobile-nav.active .mobile-menu {
+        display: block; /* Show menu when active */
+    }
+}
