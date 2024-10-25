@@ -1040,3 +1040,38 @@ footer {
     padding: 10px;
     border-radius: 5px;
 }
+
+/* Hide the hamburger menu by default */
+.hamburger {
+    display: none; /* Only show on smaller screens */
+}
+
+/* Show hamburger menu on screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px; /* Align it to the right within the header */
+        top: 20px; /* Adjust to align vertically */
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: #F8F9F2;
+    }
+
+    nav ul {
+        display: none; /* Hide regular navigation items on mobile */
+    }
+}
+
+/* Expanded mobile nav styling */
+.nav-expanded ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    right: 20px;
+    background-color: #203864;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
