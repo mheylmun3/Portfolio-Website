@@ -1075,3 +1075,16 @@ footer {
     border-radius: 5px;
     width: 200px;
 }
+
+/* Featured Projects - Mobile Carousel Display */
+@media screen and (max-width: 768px) {
+    .featured-projects-grid {
+        display: block;
+        overflow: hidden;
+    }
+    
+    .featured-project {
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+}

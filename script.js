@@ -201,3 +201,17 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelector('.hamburger').addEventListener('click', function() {
     document.querySelector('header').classList.toggle('nav-expanded');
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const projects = document.querySelectorAll(".featured-project");
+    let currentIndex = 0;
+
+    function autoScrollProjects() {
+        projects.forEach((project, index) => {
+            project.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+        currentIndex = (currentIndex + 1) % projects.length;
+    }
+
+    setInterval(autoScrollProjects, 3000); // Change every 3 seconds
+});
