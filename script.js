@@ -184,3 +184,15 @@ document.querySelectorAll('nav a').forEach(link => {
         // For external links (different HTML pages), allow default behavior
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the header height
+    const header = document.querySelector('header');
+    const firstSection = document.querySelector('.section-first');
+    
+    if (header && firstSection) {
+        const headerHeight = header.offsetHeight;
+        // Add padding to the first section based on the header height
+        firstSection.style.paddingTop = (headerHeight + 20) + 'px'; // Add 40px for extra space
+    }
+});
