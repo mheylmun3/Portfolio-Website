@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with logo and navigation -->
+    <header class="sticky">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="projects.html">Projects</a>
+                        <ul class="dropdown-content">
+                            <li><a href="data_projects.html">Data Projects</a></li>
+                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="qualifications.html">Qualifications</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <a href="index.html"> <!-- Link to the home page -->
+            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+        </a>
+    </div>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p class="contact-info-text">Feel free to contact me directly through these methods or fill out the form below:</p>
+            <ul class="contact-info-list">
+                <li>Email: <a href="mailto:michael.heylmun@gmail.com">michael.heylmun@gmail.com</a></li>
+                <li>Phone: <a href="tel:+1234567890">+1 (231) 670-4511</a></li>
+            </ul>
+
+            <form action="https://formspree.io/f/mjkvklae" method="POST">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name">
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name">
+
+                <label for="email">Email*:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://github.com/mheylmun3" target="_blank">
+                    <img src="images/github.png" alt="GitHub" class="social-icon">
+                </a>
+            </div>
+            <p>© 2024 Michael Heylmun. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script defer src="script.js"></script>
+</body>
+</html>
+    

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Michael Heylmun - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with logo and navigation -->
+    <header class="sticky">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="projects.html">Projects</a>
+                        <ul class="dropdown-content">
+                            <li><a href="data_projects.html">Data Projects</a></li>
+                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="qualifications.html">Qualifications</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <a href="index.html"> <!-- Link to the home page -->
+            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <canvas id="interactive-canvas"></canvas>
+        <div class="hero-content">
+            <h2>Welcome to My Portfolio</h2>
+            <p>I build solutions through data.</p>
+            <a href="about.html" class="btn">About Me</a>
+
+            <!-- Featured Projects Section -->
+            <div id="featured-projects">
+                <h3>Featured Projects</h3>
+                <div class="featured-projects-grid">
+                    <!-- Featured Project 1 -->
+                    <a href="data-fest.html" class="project-link">
+                        <div class="featured-project">
+                            <img src="images/data-fest.jpg" alt="DataFest Competition">
+                            <p>DataFest Competition</p>
+                        </div>
+                    </a>
+
+                    <!-- Featured Project 2 -->
+                    <a href="projects/movement-science-project.html" class="project-link">
+                        <div class="featured-project">
+                            <img src="images/movement-science.png" alt="Movement Science Project">
+                            <p>Movement Science Project</p>
+                        </div>
+                    </a>
+
+                    <!-- Featured Project 3 -->
+                    <a href="projects/housing-market-analysis.html" class="project-link">
+                        <div class="featured-project">
+                            <img src="images/housing-market.jpg" alt="Housing Market Analysis">
+                            <p>Housing Market Analysis</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://github.com/mheylmun3" target="_blank">
+                    <img src="images/github.png" alt="GitHub" class="social-icon">
+                </a>
+            </div>
+            <p>© 2024 Michael Heylmun. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <script defer src="script.js"></script>
+</body>
+</html>

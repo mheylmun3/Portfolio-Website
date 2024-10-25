@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Michael Heylmun - About</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with logo and navigation -->
+    <header class="sticky">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="projects.html">Projects</a>
+                        <ul class="dropdown-content">
+                            <li><a href="data_projects.html">Data Projects</a></li>
+                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="qualifications.html">Qualifications</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <a href="index.html"> <!-- Link to the home page -->
+            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+        </a>
+    </div>
+
+<!-- About Section -->
+<section id="about" class="section">
+    <div class="container">
+        <h2>About Me</h2> <!-- Separate "About Me" header outside the text box -->
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Biography</h3> <!-- "Biography" header inside the text box -->
+                <p>
+                    I'm Michael Heylmun, a data analyst based out of Grand Rapids, Michigan. I hold a Bachelor of Science degree 
+                    in Statistics with minors in Engineering Science and Mathematics from Grand Valley State University. Currently 
+                    continuing my learning through online courses and individual projects.
+                </p>
+                <p>
+                    I am proficient in Python, R, C, SAS, SQL, and Power BI, with a strong background in statistical analysis, 
+                    data visualization, and data manipulation. I am experienced in utilizing Python libraries such as Numpy, 
+                    Pandas, Matplotlib, Seaborn, and Scikit-learn to analyze and interpret complex datasets.
+                </p>
+                <p>
+                    I have been actively applying machine learning and predictive modeling techniques to my current individual 
+                    projects, which will appear here in the near future.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="images/CT.png" alt="Michael Heylmun">
+            </div>
+        </div>
+
+        <!-- Resume Section -->
+        <div class="resume-section">
+            <h2>My Resume</h2>
+            <p>View my resume directly below or download it using the icon at the bottom:</p>
+            <embed src="files/resume.pdf" type="application/pdf" class="responsive-embed">
+            <a href="files/resume.pdf" download>
+                <img src="images/download-icon.png" alt="Download Resume" class="resume-download-icon">
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://github.com/mheylmun3" target="_blank">
+                    <img src="images/github.png" alt="GitHub" class="social-icon">
+                </a>
+            </div>
+            <p>© 2024 Michael Heylmun. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <script defer src="script.js"></script>
+</body>
+</html>
