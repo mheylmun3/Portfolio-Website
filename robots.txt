@@ -1,0 +1,18 @@
+# If you're reading this and not a robot, I'm very surprised.
+# Thanks for checking, but feel free to explore the site!
+
+User-agent: *
+Disallow:   # This line ensures no directory is blocked entirely
+
+Allow: /about/
+Allow: /contact/
+Allow: /projects/
+Allow: /data_projects/
+Allow: /nondata_projects/
+Allow: /qualifications/
+Allow: /blackjack_game/
+Allow: /recipes_website/
+Allow: /data-fest/
+Allow: /housing_market_analysis/
+Allow: /movement_science_project/
+Allow: /job_market_analysis/
