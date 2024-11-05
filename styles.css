@@ -141,6 +141,7 @@ header.scrolled + .header-banner {
 #hero {
     position: relative;
     width: 100%;
+    max-width: 100vw; /* Prevent it from exceeding the viewport width */
     min-height: 100vh; /* Full viewport height */
     background-color: #464646;
     overflow: hidden;
@@ -149,6 +150,7 @@ header.scrolled + .header-banner {
     justify-content: center; /* Center contents vertically */
     padding-bottom: 20px; /* Add padding at the bottom of the hero section */
     padding-top: 120px; /* Ensure the hero content is not hidden behind the header */
+    overflow-x: hidden; /* Ensure no overflow in the hero section */
 }
 
 @media screen and (max-width: 768px) {
@@ -157,6 +159,7 @@ header.scrolled + .header-banner {
         text-align: center; /* Ensure text stays centered */
         height: auto; /* Remove full height for mobile */
         width: auto;
+        max-width: 100vw; /* Prevent it from exceeding the viewport width */
     }
 
     /* Adjust image and text size */
@@ -357,12 +360,13 @@ a.project-link {
 }
 
 footer {
-    width: 100vw; /* Full viewport width */
-    max-width: 100%; /* Ensure no overflow */
+    width: 100%;
     background-color: #333;
     color: white;
     padding: 20px 0;
     text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+    overflow: hidden; /* Prevent any content from overflowing */
 }
 
 .footer-container {
