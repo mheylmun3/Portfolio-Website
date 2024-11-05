@@ -10,15 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Adjust canvas size to fit the window and account for DPI
         function adjustCanvasSize() {
-            // Scale the canvas based on DPI
             canvas.width = window.innerWidth * dpi;
             canvas.height = window.innerHeight * dpi;
-
-            // Scale the drawing context to prevent blurry lines and dots
             ctx.scale(dpi, dpi);
         }
 
-        // Adjust the canvas size initially and on window resize
         adjustCanvasSize();
         window.addEventListener('resize', function () {
             adjustCanvasSize();
@@ -44,13 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.y = y;
             this.directionX = directionX;
             this.directionY = directionY;
-
-            // Adjust size based on screen width for clarity on smaller screens
-            this.size = window.innerWidth < 768 ? size * 0.7 : size;
+            this.size = window.innerWidth < 768 ? size * 0.7 : size; // Smaller particles for mobile
             this.color = color;
         }
 
-        // Draw Method for Particles
         Particle.prototype.draw = function () {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
@@ -58,9 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.fill();
         };
 
-        // Update Particle Positions and Avoid Mouse
         Particle.prototype.update = function () {
-            // Check if the particles are within the canvas
             if (this.x > canvas.width / dpi || this.x < 0) {
                 this.directionX = -this.directionX;
             }
@@ -68,14 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.directionY = -this.directionY;
             }
 
-            // Check mouse-particle interaction (move particles away from the mouse)
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
 
             if (distance < mouse.radius) {
                 if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                    this.x += 5; // Push particle away from mouse
+                    this.x += 5;
                 }
                 if (mouse.x > this.x && this.x > this.size * 10) {
                     this.x -= 5;
@@ -88,18 +78,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Move particles by their direction
             this.x += this.directionX;
             this.y += this.directionY;
 
-            // Draw particles
             this.draw();
         };
 
         // Create Particles
         function init() {
             particlesArray.length = 0;
-            let numberOfParticles = (canvas.width * canvas.height) / (9000 * dpi); // Adjust number based on DPI
+
+            // Adjust particle count based on screen size
+            let numberOfParticles;
+            if (window.innerWidth < 768) {
+                // Fewer particles for smaller screens
+                numberOfParticles = (canvas.width * canvas.height) / (18000 * dpi); 
+            } else {
+                // More particles for larger screens
+                numberOfParticles = (canvas.width * canvas.height) / (9000 * dpi);
+            }
+
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = Math.random() * 5 + 1;
                 let x = Math.random() * (innerWidth - size * 2) + size;
@@ -138,11 +136,10 @@ document.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width / dpi, canvas.height / dpi);
 
-            // Draw particles and their lines
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
             }
-            connect(); // Draw lines between particles after updating them
+            connect();
         }
 
         // Initial Setup
