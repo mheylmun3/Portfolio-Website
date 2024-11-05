@@ -5,9 +5,25 @@ document.addEventListener('DOMContentLoaded', function() {
     if (canvas) {
         const ctx = canvas.getContext('2d');
 
-        // Adjust canvas size to fit the window
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Device Pixel Ratio to support high-res screens
+        const dpi = window.devicePixelRatio || 1;
+
+        // Adjust canvas size to fit the window and account for DPI
+        function adjustCanvasSize() {
+            // Scale the canvas based on DPI
+            canvas.width = window.innerWidth * dpi;
+            canvas.height = window.innerHeight * dpi;
+
+            // Scale the drawing context to prevent blurry lines and dots
+            ctx.scale(dpi, dpi);
+        }
+
+        // Adjust the canvas size initially and on window resize
+        adjustCanvasSize();
+        window.addEventListener('resize', function () {
+            adjustCanvasSize();
+            init(); // Re-initialize particles to fit resized canvas
+        });
 
         const particlesArray = [];
         const mouse = {
@@ -22,20 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
             mouse.y = event.clientY;
         });
 
-        // Event Listener for window resize to recalculate canvas size
-        window.addEventListener('resize', function () {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init(); // Re-initialize particles to fit resized canvas
-        });
-
         // Particle Constructor
         function Particle(x, y, directionX, directionY, size, color) {
             this.x = x;
             this.y = y;
             this.directionX = directionX;
             this.directionY = directionY;
-            this.size = size;
+
+            // Adjust size based on screen width for clarity on smaller screens
+            this.size = window.innerWidth < 768 ? size * 0.7 : size;
             this.color = color;
         }
 
@@ -50,10 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update Particle Positions and Avoid Mouse
         Particle.prototype.update = function () {
             // Check if the particles are within the canvas
-            if (this.x > canvas.width || this.x < 0) {
+            if (this.x > canvas.width / dpi || this.x < 0) {
                 this.directionX = -this.directionX;
             }
-            if (this.y > canvas.height || this.y < 0) {
+            if (this.y > canvas.height / dpi || this.y < 0) {
                 this.directionY = -this.directionY;
             }
 
@@ -88,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create Particles
         function init() {
             particlesArray.length = 0;
-            let numberOfParticles = (canvas.width * canvas.height) / 9000;
+            let numberOfParticles = (canvas.width * canvas.height) / (9000 * dpi); // Adjust number based on DPI
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = Math.random() * 5 + 1;
                 let x = Math.random() * (innerWidth - size * 2) + size;
@@ -101,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Draw lines between particles (optional, for web effect)
+        // Draw lines between particles
         function connect() {
             let opacityValue = 1;
             for (let a = 0; a < particlesArray.length; a++) {
@@ -111,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                         opacityValue = 1 - (distance / 20000);
-                        ctx.strokeStyle = 'rgba(200, 200, 200,' + opacityValue + ')'; // Dark grey for lines
-                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = `rgba(200, 200, 200, ${opacityValue})`; // Dark grey for lines
+                        ctx.lineWidth = dpi > 1 ? 1.5 : 1; // Adjust line width for DPI
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -125,20 +136,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Animation Loop
         function animate() {
             requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            ctx.clearRect(0, 0, canvas.width / dpi, canvas.height / dpi);
 
             // Draw particles and their lines
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
             }
-            connect(); // Draw lines between particles after updating them (optional)
+            connect(); // Draw lines between particles after updating them
         }
 
         // Initial Setup
         init();
         animate();
-    } else {
-        console.log("No canvas element found. Skipping particle animation.");
     }
 });
 
