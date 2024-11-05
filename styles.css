@@ -332,6 +332,8 @@ a.project-link {
 }
 
 footer {
+    width: 100vw; /* Full viewport width */
+    max-width: 100%; /* Ensure no overflow */
     background-color: #333;
     color: white;
     padding: 20px 0;
@@ -1286,4 +1288,30 @@ footer {
     .project {
         margin-bottom: 30px; /* Add space between each project */
     }
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Ensure all containers and elements fit within the viewport width */
+.container, .header, .footer, .project, .project-image {
+    max-width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's width */
+}
+
+/* Prevent images from overflowing the viewport */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix any potential margin/padding issues with body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ensure full width */
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
