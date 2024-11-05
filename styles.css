@@ -151,6 +151,26 @@ header.scrolled + .header-banner {
     padding-top: 120px; /* Ensure the hero content is not hidden behind the header */
 }
 
+@media screen and (max-width: 768px) {
+    #hero {
+        padding: 20px;
+        text-align: center; /* Ensure text stays centered */
+        height: auto; /* Remove full height for mobile */
+    }
+
+    /* Adjust image and text size */
+    .hero-content {
+        padding: 10px;
+    }
+
+    /* Adjust featured projects on mobile */
+    .featured-projects-grid {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+}
+
 /* Hero Content */
 .hero-content {
     position: relative;
