@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let numberOfParticles;
             if (window.innerWidth < 768) {
                 // Fewer particles for smaller screens
-                numberOfParticles = (canvas.width * canvas.height) / (18000 * dpi); 
+                numberOfParticles = (canvas.width * canvas.height) / (36000 * dpi); 
             } else {
                 // More particles for larger screens
                 numberOfParticles = (canvas.width * canvas.height) / (9000 * dpi);
