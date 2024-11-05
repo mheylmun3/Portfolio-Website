@@ -156,6 +156,7 @@ header.scrolled + .header-banner {
         padding: 20px;
         text-align: center; /* Ensure text stays centered */
         height: auto; /* Remove full height for mobile */
+        width: auto;
     }
 
     /* Adjust image and text size */
