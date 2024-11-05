@@ -205,3 +205,15 @@ document.querySelector('.hamburger').addEventListener('click', function() {
 document.querySelector('.hamburger').addEventListener('click', function () {
     document.querySelector('.mobile-nav').classList.toggle('active');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (hamburger && mobileMenu) { // Check if elements exist
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active'); // Toggle the X animation
+            mobileMenu.classList.toggle('open'); // Toggle the visibility of the mobile menu
+        });
+    }
+});

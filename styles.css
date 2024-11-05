@@ -724,6 +724,16 @@ section ul li {
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
+/* For mobile screens (below 768px) - Remove hexagon effect */
+@media screen and (max-width: 768px) {
+    .project-image img {
+        clip-path: none; /* Remove hexagon cut-out */
+        border-radius: 10px; /* Optional: Add a rounded corner effect for consistency */
+        width: 100%; /* Make sure the image takes the full width */
+        height: auto; /* Maintain the aspect ratio */
+    }
+}
+
 .project {
     display: flex;
     justify-content: space-between;
@@ -1189,5 +1199,91 @@ footer {
 @media screen and (max-width: 768px) {
     #featured-projects-container {
         display: none;
+    }
+}
+
+/* Style for Hamburger Icon */
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    z-index: 1001;
+}
+
+.line {
+    background-color: #ffffff;
+    height: 4px;
+    width: 100%;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.line:nth-child(1) {
+    top: 0;
+}
+
+.line:nth-child(2) {
+    top: 10px;
+}
+
+.line:nth-child(3) {
+    top: 20px;
+}
+
+/* Menu active state (change hamburger to X) */
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.hamburger.active .line:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+/* For mobile screens (below 768px) */
+@media screen and (max-width: 768px) {
+    .project {
+        flex-direction: column; /* Stack the image and info vertically */
+        align-items: center; /* Center-align the content */
+        gap: 20px; /* Add space between the image and text */
+    }
+
+    .project-image {
+        width: 100%; /* Ensure the image takes the full width */
+        text-align: center; /* Center the image */
+    }
+
+    .project-image img {
+        width: 100%; /* Full width for the image */
+        height: auto; /* Keep the aspect ratio of the image */
+        max-width: 300px; /* Optional: Set a max width for images on mobile */
+        border-radius: 10px; /* Optional: Add rounded corners */
+    }
+
+    .project-info {
+        width: 100%; /* Full width for the text */
+        text-align: center; /* Center-align the text */
+        padding: 0 10px; /* Add some padding for better readability */
+    }
+
+    .project-info h3 {
+        font-size: 1.5rem; /* Adjust heading size for mobile */
+    }
+
+    .project-info p {
+        font-size: 1.1rem; /* Adjust paragraph size for readability */
+    }
+
+    .project {
+        margin-bottom: 30px; /* Add space between each project */
     }
 }
