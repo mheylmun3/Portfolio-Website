@@ -140,10 +140,72 @@ header.scrolled + .header-banner {
 /* Hero Section */
 #hero {
     position: relative;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh; /* Full viewport height */
     background-color: #464646;
     overflow: hidden;
-    padding-bottom: 20px; /* Add more padding at the bottom of the hero section */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center contents vertically */
+    padding-bottom: 20px; /* Add padding at the bottom of the hero section */
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensure content is centered */
+}
+
+/* Ensure the featured projects section has enough space on small screens */
+.featured-projects-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow projects to wrap on smaller screens */
+    margin-top: 20px;
+}
+
+.featured-project {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%; /* Take full width on mobile */
+    max-width: 280px; /* Limit the width of each project */
+    height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px; /* Add space between items */
+}
+
+/* Mobile-specific changes */
+@media screen and (max-width: 768px) {
+    #hero {
+        min-height: auto; /* Ensure flexibility on smaller screens */
+        padding: 20px; /* Add some padding */
+    }
+
+    /* Adjust the hero content padding */
+    .hero-content {
+        padding: 15px;
+    }
+
+    /* Stack projects in a single column on small screens */
+    .featured-projects-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* Add a gap between stacked projects */
+    }
+
+    .featured-project {
+        width: 90%; /* Take up more space on smaller screens */
+        margin-bottom: 20px; /* Ensure space between each project */
+    }
 }
 
 #interactive-canvas {
