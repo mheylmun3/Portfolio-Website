@@ -284,24 +284,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const hiddenElements = document.querySelectorAll(".hidden");
     const header = document.querySelector("header");
 
-    // IntersectionObserver to reveal hidden elements
+    // IntersectionObserver to reveal hidden elements as they appear in the viewport
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); // Stop observing once the element is visible
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.1 // Trigger when 10% of the element is visible
     });
 
     hiddenElements.forEach(element => {
         observer.observe(element);
     });
 
-    // Delay the header and footer animations until all content is visible
-    setTimeout(() => {
-        header.classList.add("visible");
-    }, 2800); // Adjust the delay time as needed
+    // Header animation only for the index page
+    if (window.location.pathname === "/" || window.location.pathname.endsWith("index.html")) {
+        setTimeout(() => {
+            header.classList.add("visible"); // Add the class to animate the header on the index page
+        }, 2800); // Adjust the delay time as needed
+    } else {
+        header.classList.remove("visible"); // Ensure the header is visible on other pages without animation
+    }
 });
