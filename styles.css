@@ -409,6 +409,12 @@ footer p {
     display: block;
     margin: 0 auto; /* Center the logo */
     background: none; /* Remove any background if applied */
+    filter: brightness(0.98);
+}
+
+body, header, .logo {
+    color-adjust: exact; /* Standard property */
+    -webkit-print-color-adjust: exact; /* Vendor-specific property */
 }
 
 /* Dropdown Menu */
