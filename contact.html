@@ -10,109 +10,114 @@
 </head>
 <body>
 
-    <!-- Header with logo and navigation -->
-    <header class="sticky">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="projects.html">Projects</a>
-                        <ul class="dropdown-content">
-                            <li><a href="data_projects.html">Data Projects</a></li>
-                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Mobile Hamburger Menu -->
-            <div class="mobile-nav">
-                <!-- Updated Hamburger with Three Lines -->
-                <div class="hamburger" id="hamburger-menu">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
+    <!-- Wrapper to make layout flexible -->
+    <div class="wrapper">
+        <!-- Header with logo and navigation -->
+        <header class="sticky">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                    </a>
                 </div>
 
-                <!-- Mobile Menu (Initially hidden) -->
-                <nav class="mobile-menu">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li class="dropdown">
+                            <a href="projects.html">Projects</a>
+                            <ul class="dropdown-content">
+                                <li><a href="data_projects.html">Data Projects</a></li>
+                                <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                            </ul>
+                        </li>
                         <li><a href="qualifications.html">Qualifications</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
-            </div>
-        </div>
-    </header>
 
-    <!-- Header Banner -->
-    <div class="header-banner">
-        <a href="index.html"> <!-- Link to the home page -->
-            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
-        </a>
+                <!-- Mobile Hamburger Menu -->
+                <div class="mobile-nav">
+                    <!-- Updated Hamburger with Three Lines -->
+                    <div class="hamburger" id="hamburger-menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+
+                    <!-- Mobile Menu (Initially hidden) -->
+                    <nav class="mobile-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="qualifications.html">Qualifications</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Header Banner -->
+        <div class="header-banner">
+            <a href="index.html"> <!-- Link to the home page -->
+                <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Contact Form Section -->
+            <section id="contact" class="section hidden">
+                <div class="container">
+                    <h2>Contact Me</h2>
+                    <p class="contact-info-text">Feel free to contact me directly through email, phone, socials (linked at the bottom), or fill out the form below:</p>
+                    <ul class="contact-info-list">
+                        <li>Email: <a href="mailto:michael.heylmun@gmail.com">michael.heylmun@gmail.com</a></li>
+                        <li>Phone: <a href="tel:+1234567890">+1 (231) 670-4511</a></li>
+                    </ul>
+
+                    <form action="https://formspree.io/f/mjkvklae" method="POST">
+                        <label for="first-name">First Name:</label>
+                        <input type="text" id="first-name" name="first-name">
+
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" name="last-name">
+
+                        <label for="email">Email*:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject">
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5"></textarea>
+
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                    </a>
+                    <a href="https://github.com/mheylmun3" target="_blank">
+                        <img src="images/github.png" alt="GitHub" class="social-icon">
+                    </a>
+                </div>
+                <p>© 2024 Michael Heylmun. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-
-    <!-- Contact Form Section -->
-    <section id="contact" class="section hidden">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p class="contact-info-text">Feel free to contact me directly through email, phone, socials (linked at the bottom), or fill out the form below:</p>
-            <ul class="contact-info-list">
-                <li>Email: <a href="mailto:michael.heylmun@gmail.com">michael.heylmun@gmail.com</a></li>
-                <li>Phone: <a href="tel:+1234567890">+1 (231) 670-4511</a></li>
-            </ul>
-
-            <form action="https://formspree.io/f/mjkvklae" method="POST">
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first-name">
-
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last-name">
-
-                <label for="email">Email*:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject">
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5"></textarea>
-
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
-                </a>
-                <a href="https://github.com/mheylmun3" target="_blank">
-                    <img src="images/github.png" alt="GitHub" class="social-icon">
-                </a>
-            </div>
-            <p>© 2024 Michael Heylmun. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script defer src="script.js"></script>
 </body>
 </html>
-    

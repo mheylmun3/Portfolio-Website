@@ -10,152 +10,158 @@
 </head>
 <body>
 
-    <!-- Header with logo and navigation -->
-    <header class="sticky">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="projects.html">Projects</a>
-                        <ul class="dropdown-content">
-                            <li><a href="data_projects.html">Data Projects</a></li>
-                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Mobile Hamburger Menu -->
-            <div class="mobile-nav">
-                <!-- Updated Hamburger with Three Lines -->
-                <div class="hamburger" id="hamburger-menu">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
+    <!-- Wrapper to make layout flexible -->
+    <div class="wrapper">
+        <!-- Header with logo and navigation -->
+        <header class="sticky">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                    </a>
                 </div>
 
-                <!-- Mobile Menu (Initially hidden) -->
-                <nav class="mobile-menu">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li class="dropdown">
+                            <a href="projects.html">Projects</a>
+                            <ul class="dropdown-content">
+                                <li><a href="data_projects.html">Data Projects</a></li>
+                                <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                            </ul>
+                        </li>
                         <li><a href="qualifications.html">Qualifications</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
+
+                <!-- Mobile Hamburger Menu -->
+                <div class="mobile-nav">
+                    <!-- Updated Hamburger with Three Lines -->
+                    <div class="hamburger" id="hamburger-menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+
+                    <!-- Mobile Menu (Initially hidden) -->
+                    <nav class="mobile-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="qualifications.html">Qualifications</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
+        </header> 
+
+        <!-- Header Banner -->
+        <div class="header-banner">
+            <a href="index.html"> <!-- Link to the home page -->
+                <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+            </a>
         </div>
-    </header> 
 
-    <!-- Header Banner -->
-    <div class="header-banner">
-        <a href="index.html"> <!-- Link to the home page -->
-            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
-        </a>
-    </div>
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Education Section -->
+            <section id="education" class="section section-first hidden">
+                <div class="container">
+                    <h2>Education</h2>
+                    <div class="education-container">
+                        <div class="education-text">
+                            <ul>
+                                <li><b>Grand Valley State University</b></li>
+                                <li><b>Bachelor of Science in Statistics</b></li>
+                                <li><b>Minors:</b> Engineering Science and Mathematics</li>
+                                <li>Graduated April 2024</li>
+                            </ul>
+                            <h3>Relevant Coursework:</h3>
+                            <table class="coursework-table">
+                                <tr>
+                                    <td>Intermediate Applied Statistics</td>
+                                    <td>Mathematical Statistics I</td>
+                                </tr>
+                                <tr>
+                                    <td>Mathematical Statistics II</td>
+                                    <td>Design of Experiments</td>
+                                </tr>
+                                <tr>
+                                    <td>Applied Regression Analysis</td>
+                                    <td>Statistical Computing and Graphics with R</td>
+                                </tr>
+                                <tr>
+                                    <td>Calculus 3</td>
+                                    <td>Linear Algebra and Differential Equations</td>
+                                </tr>
+                                <tr>
+                                    <td>Operations Research</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="education-image">
+                            <img src="images/grad.png" alt="Education Image">
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section section-first hidden">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="education-container">
-                <div class="education-text">
+            <!-- Skills Section -->
+            <section id="skills" class="section hidden">
+                <div class="container">
+                    <h2>Skills</h2>
                     <ul>
-                        <li><b>Grand Valley State University</b></li>
-                        <li><b>Bachelor of Science in Statistics</b></li>
-                        <li><b>Minors:</b> Engineering Science and Mathematics</li>
-                        <li>Graduated April 2024</li>
+                        <li><b>Programming Languages:</b> Python, R, C, SAS, SQL, HTML, JavaScript, CSS</li>
+                        <li><b>Python Libraries:</b> Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn</li>
+                        <li><b>Data Science Skills:</b> Data cleaning, statistical analysis, data visualization, and machine learning.</li>
+                        <li><b>Version Control:</b> Git and Github</li>
+                        <li><b>Software & Tools:</b> Power BI, Databricks, AutoCAD, SolidWorks, Microsoft Office, Slack, Linux, Windows 11</li>
                     </ul>
-                    <h3>Relevant Coursework:</h3>
-                    <table class="coursework-table">
-                        <tr>
-                            <td>Intermediate Applied Statistics</td>
-                            <td>Mathematical Statistics I</td>
-                        </tr>
-                        <tr>
-                            <td>Mathematical Statistics II</td>
-                            <td>Design of Experiments</td>
-                        </tr>
-                        <tr>
-                            <td>Applied Regression Analysis</td>
-                            <td>Statistical Computing and Graphics with R</td>
-                        </tr>
-                        <tr>
-                            <td>Calculus 3</td>
-                            <td>Linear Algebra and Differential Equations</td>
-                        </tr>
-                        <tr>
-                            <td>Operations Research</td>
-                        </tr>
-                    </table>
                 </div>
-                <div class="education-image">
-                    <img src="images/grad.png" alt="Education Image">
+            </section>
+
+            <!-- Certificates Section -->
+            <section id="certificates" class="section hidden">
+                <div class="container">
+                    <h2>Certificates</h2>
+                    <h3>Completed:</h3>
+                    <ul>
+                        <li>Data Analysis on Databricks</li>
+                        <li>Python for Data Science, AI & Development</li>
+                        <li>The Ultimate MySQL Bootcamp</li>
+                    </ul>
+                    <h3>In Progress:</h3>
+                    <ul>
+                        <li>Python for Machine Learning & Data Science Masterclass</li>
+                        <li>The Git and Github Bootcamp</li>
+                        <li>Mathematical Foundations of Machine Learning</li>
+                        <li>Intermediate to Advanced Python with 10 OOP Projects</li>
+                    </ul>
                 </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                    </a>
+                    <a href="https://github.com/mheylmun3" target="_blank">
+                        <img src="images/github.png" alt="GitHub" class="social-icon">
+                    </a>
+                </div>
+                <p>© 2024 Michael Heylmun. All rights reserved.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section hidden">
-        <div class="container">
-            <h2>Skills</h2>
-            <ul>
-                <li><b>Programming Languages:</b> Python, R, C, SAS, SQL, HTML, JavaScript, CSS</li>
-                <li><b>Python Libraries:</b> Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn</li>
-                <li><b>Data Science Skills:</b> Data cleaning, statistical analysis, data visualization, and machine learning.</li>
-                <li><b>Version Control:</b> Git and Github</li>
-                <li><b>Software & Tools:</b> Power BI, Databricks, AutoCAD, SolidWorks, Microsoft Office, Slack, Linux, Windows 11</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="section hidden">
-        <div class="container">
-            <h2>Certificates</h2>
-            <h3>Completed:</h3>
-            <ul>
-                <li>Data Analysis on Databricks</li>
-                <li>Python for Data Science, AI & Development</li>
-                <li>The Ultimate MySQL Bootcamp</li>
-            </ul>
-            <h3>In Progress:</h3>
-            <ul>
-                <li>Python for Machine Learning & Data Science Masterclass</li>
-                <li>The Git and Github Bootcamp</li>
-                <li>Mathematical Foundations of Machine Learning</li>
-                <li>Intermediate to Advanced Python with 10 OOP Projects</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
-                </a>
-                <a href="https://github.com/mheylmun3" target="_blank">
-                    <img src="images/github.png" alt="GitHub" class="social-icon">
-                </a>
-            </div>
-            <p>© 2024 Michael Heylmun. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script defer src="script.js"></script>
 </body>

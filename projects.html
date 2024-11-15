@@ -10,110 +10,116 @@
 </head>
 <body>
 
-    <!-- Header with logo and navigation -->
-    <header class="sticky">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="projects.html">Projects</a>
-                        <ul class="dropdown-content">
-                            <li><a href="data_projects.html">Data Projects</a></li>
-                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Mobile Hamburger Menu -->
-            <div class="mobile-nav">
-                <!-- Updated Hamburger with Three Lines -->
-                <div class="hamburger" id="hamburger-menu">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
+    <!-- Wrapper to make layout flexible -->
+    <div class="wrapper">
+        <!-- Header with logo and navigation -->
+        <header class="sticky">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                    </a>
                 </div>
 
-                <!-- Mobile Menu (Initially hidden) -->
-                <nav class="mobile-menu">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li class="dropdown">
+                            <a href="projects.html">Projects</a>
+                            <ul class="dropdown-content">
+                                <li><a href="data_projects.html">Data Projects</a></li>
+                                <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                            </ul>
+                        </li>
                         <li><a href="qualifications.html">Qualifications</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
+
+                <!-- Mobile Hamburger Menu -->
+                <div class="mobile-nav">
+                    <!-- Updated Hamburger with Three Lines -->
+                    <div class="hamburger" id="hamburger-menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+
+                    <!-- Mobile Menu (Initially hidden) -->
+                    <nav class="mobile-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="qualifications.html">Qualifications</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
+        </header>
+        
+        <!-- Header Banner -->
+        <div class="header-banner">
+            <a href="index.html">
+                <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+            </a>
         </div>
-    </header> 
-    
-    <!-- Header Banner -->
-    <div class="header-banner">
-        <a href="index.html">
-            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
-        </a>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Projects Section -->
+            <section id="projects" class="section hidden">
+                <div class="container">
+                    <h2>Projects</h2>
+                    <div class="projects-grid">
+                        <!-- Data Projects Box -->
+                        <a href="data_projects.html" class="project-link">
+                            <div class="project">
+                                <div class="project-info">
+                                    <h3>Data Projects</h3>
+                                    <p>Explore my data projects that involve in-depth analysis and data visualization techniques.</p>
+                                </div>
+                                <div class="project-image">
+                                    <img src="images/data.jpg" alt="Data Projects Image">
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Non-data Projects Box -->
+                        <a href="nondata_projects.html" class="project-link">
+                            <div class="project">
+                                <div class="project-info">
+                                    <h3>Non-data Projects</h3>
+                                    <p>See my work in other areas beyond data analysis and visualization.</p>
+                                </div>
+                                <div class="project-image">
+                                    <img src="images/nondata.png" alt="Non-data Projects Image">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                    </a>
+                    <a href="https://github.com/mheylmun3" target="_blank">
+                        <img src="images/github.png" alt="GitHub" class="social-icon">
+                    </a>
+                </div>
+                <p>© 2024 Michael Heylmun. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section hidden">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <!-- Data Projects Box -->
-                <a href="data_projects.html" class="project-link">
-                    <div class="project">
-                        <div class="project-info">
-                            <h3>Data Projects</h3>
-                            <p>Explore my data projects that involve in-depth analysis and data visualization techniques.</p>
-                        </div>
-                        <div class="project-image">
-                            <img src="images/data.jpg" alt="Data Projects Image">
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Non-data Projects Box -->
-                <a href="nondata_projects.html" class="project-link">
-                    <div class="project">
-                        <div class="project-info">
-                            <h3>Non-data Projects</h3>
-                            <p>See my work in other areas beyond data analysis and visualization.</p>
-                        </div>
-                        <div class="project-image">
-                            <img src="images/nondata.png" alt="Non-data Projects Image">
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
-                </a>
-                <a href="https://github.com/mheylmun3" target="_blank">
-                    <img src="images/github.png" alt="GitHub" class="social-icon">
-                </a>
-            </div>
-            <p>© 2024 Michael Heylmun. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script defer src="script.js"></script>
 </body>

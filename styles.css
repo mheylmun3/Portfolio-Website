@@ -1365,15 +1365,40 @@ footer {
 
 /* Initial styles for header animation */
 header {
-    opacity: 1; /* Make sure the header is fully visible by default */
-    transition: none; /* No transition by default */
+    opacity: 0; /* Start hidden for the animation effect */
+    transition: opacity 0.3s ease; /* Apply transition for fade-in */
 }
 
 header.visible {
-    opacity: 1;
-    transition: opacity 0.3s ease; /* Add transition for the index page animation */
+    opacity: 1; /* Make header visible when the class is added */
 }
 
 header.static {
-    transition: none; /* Remove any transition or animation */
+    opacity: 1; /* Ensure header is fully visible */
+    transition: none; /* No transition effect */
+}
+
+/* Make the body and wrapper take up the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main content should expand to fill the remaining space */
+.content {
+    flex: 1;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }

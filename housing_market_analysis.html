@@ -10,102 +10,108 @@
 </head>
 <body>
 
-    <!-- Header with logo and navigation -->
-    <header class="sticky">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="projects.html">Projects</a>
-                        <ul class="dropdown-content">
-                            <li><a href="data_projects.html">Data Projects</a></li>
-                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Mobile Hamburger Menu -->
-            <div class="mobile-nav">
-                <!-- Updated Hamburger with Three Lines -->
-                <div class="hamburger" id="hamburger-menu">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
+    <!-- Wrapper to keep footer at the bottom -->
+    <div class="wrapper">
+        <!-- Header with logo and navigation -->
+        <header class="sticky">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                    </a>
                 </div>
 
-                <!-- Mobile Menu (Initially hidden) -->
-                <nav class="mobile-menu">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li class="dropdown">
+                            <a href="projects.html">Projects</a>
+                            <ul class="dropdown-content">
+                                <li><a href="data_projects.html">Data Projects</a></li>
+                                <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                            </ul>
+                        </li>
                         <li><a href="qualifications.html">Qualifications</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
+
+                <!-- Mobile Hamburger Menu -->
+                <div class="mobile-nav">
+                    <!-- Updated Hamburger with Three Lines -->
+                    <div class="hamburger" id="hamburger-menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+
+                    <!-- Mobile Menu (Initially hidden) -->
+                    <nav class="mobile-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="qualifications.html">Qualifications</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Header Banner -->
-    <div class="header-banner">
-        <a href="index.html"> <!-- Link to the home page -->
-            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
-        </a>
-    </div>
-
-    <!-- American Housing Market Section -->
-    <section id="american-housing-market" class="section">
-        <h2>American Housing Market Analysis</h2>
-        
-        <!-- Full Width Description Container -->
-        <div class="about-text full-width hidden">
-            <p>
-                This project was the Final Project for my Statistical Computing and Graphics with R class. In this project, I 
-                analyzed U.S. Census data to study trends in housing and rent prices, identifying which
-                demographics were most impacted by changes using R. This project was meant to be performed in groups of three, 
-                but I decided to complete this by myself. Despite this, my project was recognized as the top project in both 
-                class sections by the professor.
-            </p>
+        <!-- Header Banner -->
+        <div class="header-banner">
+            <a href="index.html"> <!-- Link to the home page -->
+                <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+            </a>
         </div>
 
-        <!-- Embed Local HTML File -->
-        <div class="container hidden">
-            <iframe src="files/housing_market_file.html" width="100%" height="800px" frameborder="0"></iframe>
-        </div>
-    </section>
+        <!-- Main Content -->
+        <main class="content">
+            <!-- American Housing Market Section -->
+            <section id="american-housing-market" class="section">
+                <h2>American Housing Market Analysis</h2>
+                
+                <!-- Full Width Description Container -->
+                <div class="about-text full-width hidden">
+                    <p>
+                        This project was the Final Project for my Statistical Computing and Graphics with R class. In this project, I 
+                        analyzed U.S. Census data to study trends in housing and rent prices, identifying which
+                        demographics were most impacted by changes using R. This project was meant to be performed in groups of three, 
+                        but I decided to complete this by myself. Despite this, my project was recognized as the top project in both 
+                        class sections by the professor.
+                    </p>
+                </div>
 
-    <!-- Button to Move to Next Project -->
-    <div class="projects-button-container">
-        <a href="job_market_analysis.html" class="btn">View Next Project</a>
-    </div>
+                <!-- Embed Local HTML File -->
+                <div class="container hidden">
+                    <iframe src="files/housing_market_file.html" width="100%" height="800px" frameborder="0"></iframe>
+                </div>
+            </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
-                </a>
-                <a href="https://github.com/mheylmun3" target="_blank">
-                    <img src="images/github.png" alt="GitHub" class="social-icon">
-                </a>
+            <!-- Button to Move to Next Project -->
+            <div class="projects-button-container">
+                <a href="job_market_analysis.html" class="btn">View Next Project</a>
             </div>
-            <p>© 2024 Michael Heylmun. All rights reserved.</p>
-        </div>
-    </footer>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                    </a>
+                    <a href="https://github.com/mheylmun3" target="_blank">
+                        <img src="images/github.png" alt="GitHub" class="social-icon">
+                    </a>
+                </div>
+                <p>© 2024 Michael Heylmun. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
 
     <script defer src="script.js"></script>
 </body>

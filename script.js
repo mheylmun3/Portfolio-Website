@@ -300,12 +300,14 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(element);
     });
 
-    // Header animation only for the index page
+    // Check if on the home page (index page)
     if (window.location.pathname === "/" || window.location.pathname.endsWith("index.html")) {
+        // Add delay to fade in the header on the home page
         setTimeout(() => {
-            header.classList.add("visible"); // Add the class to animate the header on the index page
-        }, 2800); // Adjust the delay time as needed
+            header.classList.add("visible");
+        }, 2800); // Adjust the delay as needed
     } else {
-        header.classList.remove("visible"); // Ensure the header is visible on other pages without animation
+        // Make the header static and fully visible on other pages
+        header.classList.add("static");
     }
 });

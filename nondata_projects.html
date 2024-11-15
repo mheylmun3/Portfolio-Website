@@ -10,123 +10,129 @@
 </head>
 <body>
 
-    <!-- Header with logo and navigation -->
-    <header class="sticky">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="projects.html">Projects</a>
-                        <ul class="dropdown-content">
-                            <li><a href="data_projects.html">Data Projects</a></li>
-                            <li><a href="nondata_projects.html">Non-data Projects</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Mobile Hamburger Menu -->
-            <div class="mobile-nav">
-                <!-- Updated Hamburger with Three Lines -->
-                <div class="hamburger" id="hamburger-menu">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
+    <!-- Wrapper to make layout flexible -->
+    <div class="wrapper">
+        <!-- Header with logo and navigation -->
+        <header class="sticky">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Michael Heylmun Logo" class="logo-img">
+                    </a>
                 </div>
 
-                <!-- Mobile Menu (Initially hidden) -->
-                <nav class="mobile-menu">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li class="dropdown">
+                            <a href="projects.html">Projects</a>
+                            <ul class="dropdown-content">
+                                <li><a href="data_projects.html">Data Projects</a></li>
+                                <li><a href="nondata_projects.html">Non-data Projects</a></li>
+                            </ul>
+                        </li>
                         <li><a href="qualifications.html">Qualifications</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
-            </div>
-        </div>
-    </header>
 
-    <!-- Header Banner -->
-    <div class="header-banner">
-        <a href="index.html">
-            <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
-        </a>
+                <!-- Mobile Hamburger Menu -->
+                <div class="mobile-nav">
+                    <!-- Updated Hamburger with Three Lines -->
+                    <div class="hamburger" id="hamburger-menu">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+
+                    <!-- Mobile Menu (Initially hidden) -->
+                    <nav class="mobile-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="qualifications.html">Qualifications</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Header Banner -->
+        <div class="header-banner">
+            <a href="index.html">
+                <img src="images/logo2.png" alt="Michael Heylmun Logo" class="logo-img" id="banner-logo">
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Non-Data Projects Section -->
+            <section id="non-data-projects" class="section hidden">
+                <div class="container">
+                    <h2>Non-data Projects</h2>
+                    <div class="projects-grid">
+                        <!-- Project 1: Blackjack Game -->
+                        <a href="blackjack_game.html" class="project-link">
+                            <div class="project">
+                                <div class="project-info">
+                                    <h3>Blackjack Game</h3>
+                                    <p>
+                                        A Python-based terminal game simulating a realistic casino Blackjack experience. 
+                                        Players can hit, stand, double, split, and make strategic choices, with logical handling 
+                                        of cards, aces, and splits for an immersive experience.
+                                    </p>
+                                </div>
+                                <div class="project-image">
+                                    <img src="images/blackjack.jpg" alt="Blackjack Game">
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Project 2: Recipes Website -->
+                        <a href="recipes_website.html" class="project-link">
+                            <div class="project">
+                                <div class="project-info">
+                                    <h3>Recipes Website</h3>
+                                    <p>
+                                        A work-in-progress project inspired by my girlfriend’s love for cooking, designed to 
+                                        transform her recipe-filled Google Doc into a fully interactive website. It will feature 
+                                        browsing, shopping list updates, and the ability to add new recipes directly.
+                                    </p>
+                                </div>
+                                <div class="project-image">
+                                    <img src="images/recipes.png" alt="Recipes Website">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Button to View Data Projects -->
+                    <div class="projects-button-container">
+                        <a href="data_projects.html" class="btn">View Data Projects</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
+                    </a>
+                    <a href="https://github.com/mheylmun3" target="_blank">
+                        <img src="images/github.png" alt="GitHub" class="social-icon">
+                    </a>
+                </div>
+                <p>© 2024 Michael Heylmun. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-
-    <!-- Non-Data Projects Section -->
-    <section id="non-data-projects" class="section hidden">
-        <div class="container">
-            <h2>Non-data Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1: Blackjack Game -->
-                <a href="blackjack_game.html" class="project-link">
-                    <div class="project">
-                        <div class="project-info">
-                            <h3>Blackjack Game</h3>
-                            <p>
-                                A Python-based terminal game simulating a realistic casino Blackjack experience. 
-                                Players can hit, stand, double, split, and make strategic choices, with logical handling 
-                                of cards, aces, and splits for an immersive experience.
-                            </p>
-                        </div>
-                        <div class="project-image">
-                            <img src="images/blackjack.jpg" alt="Blackjack Game">
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 2: Recipes Website -->
-                <a href="recipes_website.html" class="project-link">
-                    <div class="project">
-                        <div class="project-info">
-                            <h3>Recipes Website</h3>
-                            <p>
-                                A work-in-progress project inspired by my girlfriend’s love for cooking, designed to 
-                                transform her recipe-filled Google Doc into a fully interactive website. It will feature 
-                                browsing, shopping list updates, and the ability to add new recipes directly.
-                            </p>
-                        </div>
-                        <div class="project-image">
-                            <img src="images/recipes.png" alt="Recipes Website">
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Button to View Data Projects -->
-            <div class="projects-button-container">
-                <a href="data_projects.html" class="btn">View Data Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/michael-heylmun/" target="_blank">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
-                </a>
-                <a href="https://github.com/mheylmun3" target="_blank">
-                    <img src="images/github.png" alt="GitHub" class="social-icon">
-                </a>
-            </div>
-            <p>© 2024 Michael Heylmun. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script defer src="script.js"></script>
 </body>
