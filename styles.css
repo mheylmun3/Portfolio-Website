@@ -410,10 +410,15 @@ footer p {
     margin: 0 auto; /* Center the logo */
     background: none; /* Remove any background if applied */
     filter: brightness(0.98);
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Enlarge the image slightly */
 }
 
 body, header, .logo {
-    color-adjust: exact; /* Standard property */
+    print-color-adjust: exact; /* Standard property */
     -webkit-print-color-adjust: exact; /* Vendor-specific property */
 }
 
