@@ -223,3 +223,85 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing once visible
+            }
+        });
+    }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const heroHeading = document.getElementById("hero-heading");
+    const heroText = document.getElementById("hero-text");
+    const heroBtn = document.getElementById("hero-btn");
+    const heroProjects = document.getElementById("featured-projects");
+
+    // Helper function to add 'active' class with a delay
+    function addActiveClass(element, delay) {
+        setTimeout(() => {
+            element.classList.add("active");
+        }, delay);
+    }
+
+    // Trigger animations in sequence
+    addActiveClass(heroHeading, 300); // Delay of 0.3s
+    addActiveClass(heroText, 1500); // Delay of 0.6s
+    addActiveClass(heroBtn, 1500); // Delay of 0.9s
+    addActiveClass(heroProjects, 2800); // Delay of 1.2s
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const hiddenElements = document.querySelectorAll(".hidden");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    hiddenElements.forEach(element => {
+        observer.observe(element);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const hiddenElements = document.querySelectorAll(".hidden");
+    const header = document.querySelector("header");
+
+    // IntersectionObserver to reveal hidden elements
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    hiddenElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Delay the header and footer animations until all content is visible
+    setTimeout(() => {
+        header.classList.add("visible");
+    }, 2800); // Adjust the delay time as needed
+});
