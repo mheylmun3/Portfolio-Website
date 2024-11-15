@@ -118,18 +118,20 @@ nav ul li a:hover {
     transition: all 0.3s ease; /* Smooth transition */
 }
 
+/* Header Banner Image Styling */
 .header-banner img {
-    width: 50px; /* Adjust logo size for the banner */
-}
-
-/* Change when the user scrolls */
-header.scrolled + .header-banner {
-    display: block;
-    padding: 5px 0; /* Make the banner smaller when scrolled */
+    width: 50px; /* Base size */
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-banner.scrolled img {
-    width: 40px; /* Decrease logo size when scrolled */
+    width: 40px; /* Adjusted size when scrolled */
+}
+
+.header-banner img:hover {
+    transform: scale(1.1); /* Enlarge slightly on hover */
+    opacity: 0.9; /* Slightly reduce opacity on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow on hover */
 }
 
 /* Switch to logo2.png when scrolling */
@@ -414,7 +416,7 @@ footer p {
 }
 
 .logo img:hover {
-    transform: scale(1.1); /* Enlarge the image slightly */
+    transform: scale(1.05); /* Enlarge the image slightly */
 }
 
 body, header, .logo {
