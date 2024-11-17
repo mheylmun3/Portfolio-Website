@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('interactive-canvas');
 
-    // Check if the canvas exists (only run the script if it exists)
     if (canvas) {
         const ctx = canvas.getContext('2d');
-
-        // Device Pixel Ratio to support high-res screens
         const dpi = window.devicePixelRatio || 1;
 
-        // Adjust canvas size to fit the window and account for DPI
+        let opacity = 0; // Initial opacity value
+        const fadeInDuration = 2500; // Duration for fade-in effect (in milliseconds)
+        const fadeInInterval = 20; // Interval to increase opacity (in milliseconds)
+
         function adjustCanvasSize() {
             canvas.width = window.innerWidth * dpi;
             canvas.height = window.innerHeight * dpi;
@@ -16,42 +16,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         adjustCanvasSize();
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', function() {
             adjustCanvasSize();
-            init(); // Re-initialize particles to fit resized canvas
+            init();
         });
 
         const particlesArray = [];
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 150 // Radius of the mouse interaction
-        };
+        const mouse = { x: null, y: null, radius: 150 };
 
-        // Event Listener for Mouse Movement
-        window.addEventListener('mousemove', function (event) {
+        window.addEventListener('mousemove', function(event) {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
         });
 
-        // Particle Constructor
         function Particle(x, y, directionX, directionY, size, color) {
             this.x = x;
             this.y = y;
             this.directionX = directionX;
             this.directionY = directionY;
-            this.size = window.innerWidth < 768 ? size * 0.7 : size; // Smaller particles for mobile
+            this.size = window.innerWidth < 768 ? size * 0.7 : size;
             this.color = color;
         }
 
-        Particle.prototype.draw = function () {
+        Particle.prototype.draw = function() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = '#e6e6e6'; // Light grey color for the dots
+            ctx.fillStyle = `rgba(230, 230, 230, ${opacity})`; // Apply opacity to dots
             ctx.fill();
         };
 
-        Particle.prototype.update = function () {
+        Particle.prototype.update = function() {
             if (this.x > canvas.width / dpi || this.x < 0) {
                 this.directionX = -this.directionX;
             }
@@ -84,19 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
             this.draw();
         };
 
-        // Create Particles
         function init() {
             particlesArray.length = 0;
-
-            // Adjust particle count based on screen size
-            let numberOfParticles;
-            if (window.innerWidth < 768) {
-                // Fewer particles for smaller screens
-                numberOfParticles = (canvas.width * canvas.height) / (36000 * dpi); 
-            } else {
-                // More particles for larger screens
-                numberOfParticles = (canvas.width * canvas.height) / (9000 * dpi);
-            }
+            let numberOfParticles = window.innerWidth < 768
+                ? (canvas.width * canvas.height) / (36000 * dpi)
+                : (canvas.width * canvas.height) / (9000 * dpi);
 
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = Math.random() * 5 + 1;
@@ -104,24 +90,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 let y = Math.random() * (innerHeight - size * 2) + size;
                 let directionX = (Math.random() * 0.2) - 0.1;
                 let directionY = (Math.random() * 0.2) - 0.1;
-                let color = '#8c5523'; // Dark grey for the lines
+                let color = '#8c5523';
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
 
-        // Draw lines between particles
         function connect() {
-            let opacityValue = 1;
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
                                  + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-
                     if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 20000);
-                        ctx.strokeStyle = `rgba(200, 200, 200, ${opacityValue})`; // Dark grey for lines
-                        ctx.lineWidth = dpi > 1 ? 1.5 : 1; // Adjust line width for DPI
+                        let opacityValue = (1 - distance / 20000) * opacity; // Apply global opacity to lines
+                        ctx.strokeStyle = `rgba(200, 200, 200, ${opacityValue})`;
+                        ctx.lineWidth = dpi > 1 ? 1.5 : 1;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -131,20 +114,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Animation Loop
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width / dpi, canvas.height / dpi);
-
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
+            particlesArray.forEach(particle => particle.update());
             connect();
         }
 
-        // Initial Setup
+        function fadeIn() {
+            const interval = setInterval(() => {
+                opacity += fadeInInterval / fadeInDuration;
+                if (opacity >= 1) {
+                    opacity = 1;
+                    clearInterval(interval);
+                }
+            }, fadeInInterval);
+        }
+
         init();
         animate();
+        fadeIn(); // Start fade-in effect
     }
 });
 
@@ -242,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    const heroSection = document.getElementById("hero");
     const heroHeading = document.getElementById("hero-heading");
     const heroText = document.getElementById("hero-text");
     const heroBtn = document.getElementById("hero-btn");
@@ -254,11 +244,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }, delay);
     }
 
-    // Trigger animations in sequence
-    addActiveClass(heroHeading, 300); // Delay of 0.3s
-    addActiveClass(heroText, 1500); // Delay of 0.6s
-    addActiveClass(heroBtn, 1500); // Delay of 0.9s
-    addActiveClass(heroProjects, 2800); // Delay of 1.2s
+    // Trigger the hero section fade-in first
+    addActiveClass(heroSection, 0); // No delay for the hero section fade-in
+
+    // Trigger animations for hero elements in sequence
+    addActiveClass(heroHeading, 500); // Delay of 0.5s
+    addActiveClass(heroText, 1500); // Delay of 1.5s
+    addActiveClass(heroBtn, 1500); // Delay of 1.5s
+    addActiveClass(heroProjects, 2800); // Delay of 2.8s
 });
 
 document.addEventListener("DOMContentLoaded", function() {
