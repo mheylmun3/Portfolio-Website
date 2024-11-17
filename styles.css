@@ -365,6 +365,20 @@ a.project-link {
     margin-bottom: 20px;
 }
 
+/* Featured Project Titles */
+.featured-project p {
+    opacity: 0; /* Start with opacity 0 for fade-in effect */
+    transition: opacity 0.5s ease; /* Adjust the transition effect and duration */
+    font-size: 1.3rem; /* Font size */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Text color */
+    text-align: center; /* Center the text */
+}
+
+.featured-project.active p {
+    opacity: 1; /* Fade-in effect when active */
+}
+
 /* Hover Effect */
 .featured-project:hover {
     transform: scale(1.05); /* Slightly expands the project box on hover */

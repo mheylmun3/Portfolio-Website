@@ -236,12 +236,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const heroText = document.getElementById("hero-text");
     const heroBtn = document.getElementById("hero-btn");
     const heroProjects = document.getElementById("featured-projects");
+    const projectTitles = document.querySelectorAll(".featured-project p");
 
     // Helper function to add 'active' class with a delay
     function addActiveClass(element, delay) {
-        setTimeout(() => {
-            element.classList.add("active");
-        }, delay);
+        if (element) {
+            setTimeout(() => {
+                element.classList.add("active");
+            }, delay);
+        }
     }
 
     // Trigger the hero section fade-in first
@@ -252,6 +255,11 @@ document.addEventListener("DOMContentLoaded", function () {
     addActiveClass(heroText, 1500); // Delay of 1.5s
     addActiveClass(heroBtn, 1500); // Delay of 1.5s
     addActiveClass(heroProjects, 2800); // Delay of 2.8s
+
+    // Animate each project title
+    projectTitles.forEach((title, index) => {
+        addActiveClass(title, 3100 + (index * 300)); // Staggered delay for each title
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
