@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.getElementById('interactive-canvas');
 
     if (canvas) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         adjustCanvasSize();
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             adjustCanvasSize();
             init();
         });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const particlesArray = [];
         const mouse = { x: null, y: null, radius: 150 };
 
-        window.addEventListener('mousemove', function(event) {
+        window.addEventListener('mousemove', function (event) {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
         });
@@ -38,14 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.color = color;
         }
 
-        Particle.prototype.draw = function() {
+        Particle.prototype.draw = function () {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
             ctx.fillStyle = `rgba(230, 230, 230, ${opacity})`; // Apply opacity to dots
             ctx.fill();
         };
 
-        Particle.prototype.update = function() {
+        Particle.prototype.update = function () {
             if (this.x > canvas.width / dpi || this.x < 0) {
                 this.directionX = -this.directionX;
             }
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                                 + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
                     if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                         let opacityValue = (1 - distance / 20000) * opacity; // Apply global opacity to lines
                         ctx.strokeStyle = `rgba(200, 200, 200, ${opacityValue})`;
@@ -130,6 +130,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, fadeInInterval);
         }
+
+        // Prevent scrolling-induced refresh for mobile
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth < 768) {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop !== lastScrollTop) {
+                    lastScrollTop = scrollTop;
+                    // Prevent refresh by throttling resize/init calls
+                    clearTimeout(window.scrollThrottle);
+                    window.scrollThrottle = setTimeout(() => {
+                        adjustCanvasSize();
+                    }, 300); // Limit calls to 300ms intervals
+                }
+            }
+        });
 
         init();
         animate();
