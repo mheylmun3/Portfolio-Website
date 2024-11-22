@@ -5,10 +5,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const ctx = canvas.getContext('2d');
         const dpi = window.devicePixelRatio || 1;
 
-        let opacity = 0; // Initial opacity value
-        const fadeInDuration = 2500; // Duration for fade-in effect (in milliseconds)
-        const fadeInInterval = 20; // Interval to increase opacity (in milliseconds)
+        const particlesArray = [];
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 150, // Interaction radius
+        };
 
+        // Check if the device is mobile
+        const isMobile = window.innerWidth <= 768;
+
+        // Adjust canvas size
         function adjustCanvasSize() {
             canvas.width = window.innerWidth * dpi;
             canvas.height = window.innerHeight * dpi;
@@ -18,57 +25,54 @@ document.addEventListener('DOMContentLoaded', function () {
         adjustCanvasSize();
         window.addEventListener('resize', function () {
             adjustCanvasSize();
-            init();
+            if (!isMobile) init(); // Only reinitialize particles on non-mobile devices
         });
 
-        const particlesArray = [];
-        const mouse = { x: null, y: null, radius: 150 };
-
-        window.addEventListener('mousemove', function (event) {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        });
-
+        // Particle Constructor
         function Particle(x, y, directionX, directionY, size, color) {
             this.x = x;
             this.y = y;
             this.directionX = directionX;
             this.directionY = directionY;
-            this.size = window.innerWidth < 768 ? size * 0.7 : size;
+            this.size = size;
             this.color = color;
         }
 
+        // Draw method for particles
         Particle.prototype.draw = function () {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = `rgba(230, 230, 230, ${opacity})`; // Apply opacity to dots
+            ctx.fillStyle = '#e6e6e6'; // Light grey color for dots
             ctx.fill();
         };
 
+        // Update method for particles
         Particle.prototype.update = function () {
-            if (this.x > canvas.width / dpi || this.x < 0) {
-                this.directionX = -this.directionX;
-            }
-            if (this.y > canvas.height / dpi || this.y < 0) {
-                this.directionY = -this.directionY;
-            }
+            if (!isMobile) {
+                if (this.x > canvas.width / dpi || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height / dpi || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
 
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < mouse.radius) {
-                if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                    this.x += 5;
-                }
-                if (mouse.x > this.x && this.x > this.size * 10) {
-                    this.x -= 5;
-                }
-                if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                    this.y += 5;
-                }
-                if (mouse.y > this.y && this.y > this.size * 10) {
-                    this.y -= 5;
+                if (distance < mouse.radius) {
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                        this.x += 5;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 5;
+                    }
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                        this.y += 5;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 5;
+                    }
                 }
             }
 
@@ -78,33 +82,35 @@ document.addEventListener('DOMContentLoaded', function () {
             this.draw();
         };
 
+        // Create particles
         function init() {
             particlesArray.length = 0;
-            let numberOfParticles = window.innerWidth < 768
-                ? (canvas.width * canvas.height) / (36000 * dpi)
+            const numberOfParticles = isMobile
+                ? (canvas.width * canvas.height) / (7000 * dpi) // Fewer particles for mobile
                 : (canvas.width * canvas.height) / (9000 * dpi);
 
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = Math.random() * 5 + 1;
-                let x = Math.random() * (innerWidth - size * 2) + size;
-                let y = Math.random() * (innerHeight - size * 2) + size;
-                let directionX = (Math.random() * 0.2) - 0.1;
-                let directionY = (Math.random() * 0.2) - 0.1;
-                let color = '#8c5523';
+                const size = Math.random() * 5 + 1;
+                const x = Math.random() * (canvas.width / dpi - size * 2) + size;
+                const y = Math.random() * (canvas.height / dpi - size * 2) + size;
+                const directionX = (Math.random() * 0.2) - 0.1;
+                const directionY = (Math.random() * 0.2) - 0.1;
+                const color = '#8c5523'; // Dark grey for lines
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
 
+        // Connect particles with lines
         function connect() {
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    const distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
+                                   + ((particlesArray[a].y - particlesArray[b].y) ** 2);
                     if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        let opacityValue = (1 - distance / 20000) * opacity; // Apply global opacity to lines
+                        const opacityValue = 1 - distance / 20000;
                         ctx.strokeStyle = `rgba(200, 200, 200, ${opacityValue})`;
-                        ctx.lineWidth = dpi > 1 ? 1.5 : 1;
+                        ctx.lineWidth = dpi > 1 ? 1.5 : 1; // Adjust line width for DPI
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -114,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
+        // Animation loop
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width / dpi, canvas.height / dpi);
@@ -121,35 +128,16 @@ document.addEventListener('DOMContentLoaded', function () {
             connect();
         }
 
-        function fadeIn() {
-            const interval = setInterval(() => {
-                opacity += fadeInInterval / fadeInDuration;
-                if (opacity >= 1) {
-                    opacity = 1;
-                    clearInterval(interval);
-                }
-            }, fadeInInterval);
+        // Disable interaction on mobile
+        if (!isMobile) {
+            window.addEventListener('mousemove', function (event) {
+                mouse.x = event.clientX;
+                mouse.y = event.clientY;
+            });
         }
-
-        // Prevent scrolling-induced refresh for mobile
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            if (window.innerWidth < 768) {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop !== lastScrollTop) {
-                    lastScrollTop = scrollTop;
-                    // Prevent refresh by throttling resize/init calls
-                    clearTimeout(window.scrollThrottle);
-                    window.scrollThrottle = setTimeout(() => {
-                        adjustCanvasSize();
-                    }, 300); // Limit calls to 300ms intervals
-                }
-            }
-        });
 
         init();
         animate();
-        fadeIn(); // Start fade-in effect
     }
 });
 

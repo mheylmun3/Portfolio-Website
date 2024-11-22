@@ -1328,7 +1328,7 @@ footer {
     border-radius: 5px;
     position: absolute;
     left: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .line:nth-child(1) {
@@ -1345,7 +1345,7 @@ footer {
 
 /* Menu active state (change hamburger to X) */
 .hamburger.active .line:nth-child(1) {
-    transform: rotate(45deg);
+    transform: rotate(45deg) rotateY(180deg);
     top: 10px;
 }
 
@@ -1354,7 +1354,7 @@ footer {
 }
 
 .hamburger.active .line:nth-child(3) {
-    transform: rotate(-45deg);
+    transform: rotate(-45deg) rotateY(180deg);
     top: 10px;
 }
 
