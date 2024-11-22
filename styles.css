@@ -1483,3 +1483,38 @@ html, body {
     opacity: 1; /* Fade in elements */
     transform: translateY(0); /* Move elements to their original position */
 }
+
+/* Add a black border (outline) to hero heading text */
+#hero-heading {
+    font-size: 3rem; /* Adjust font size as needed */
+    color: #ffffff; /* Main text color */
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 #000, /* Top-left shadow */
+         1px -1px 0 #000, /* Top-right shadow */
+        -1px  1px 0 #000, /* Bottom-left shadow */
+         1px  1px 0 #000; /* Bottom-right shadow */
+}
+
+/* Add a black border (outline) to hero text */
+#hero-text {
+    font-size: 1.5rem; /* Adjust font size as needed */
+    color: #ffffff; /* Main text color */
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 #000, /* Top-left shadow */
+         1px -1px 0 #000, /* Top-right shadow */
+        -1px  1px 0 #000, /* Bottom-left shadow */
+         1px  1px 0 #000; /* Bottom-right shadow */
+}
+
+#featured-projects h3 {
+    font-size: 2rem; /* Adjust font size as needed */
+    color: #ffffff; /* Main text color */
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 #000, /* Top-left shadow */
+         1px -1px 0 #000, /* Top-right shadow */
+        -1px  1px 0 #000, /* Bottom-left shadow */
+         1px  1px 0 #000; /* Bottom-right shadow */
+}
