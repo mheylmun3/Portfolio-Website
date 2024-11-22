@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function init() {
             particlesArray.length = 0;
             const numberOfParticles = isMobile
-                ? (canvas.width * canvas.height) / (7000 * dpi) // Fewer particles for mobile
+                ? (canvas.width * canvas.height) / (27000 * dpi) // Fewer particles for mobile
                 : (canvas.width * canvas.height) / (9000 * dpi);
 
             for (let i = 0; i < numberOfParticles; i++) {
