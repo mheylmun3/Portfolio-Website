@@ -2,7 +2,7 @@
 # Thanks for checking, but feel free to explore the site!
 
 User-agent: *
-Disallow:   # This line ensures no directory is blocked entirely
+Disallow:
 
 Allow: /about/
 Allow: /contact/
