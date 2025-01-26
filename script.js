@@ -9,13 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const mouse = {
             x: null,
             y: null,
-            radius: 150, // Interaction radius
+            radius: 150,
         };
 
-        // Check if the device is mobile
         const isMobile = window.innerWidth <= 768;
 
-        // Adjust canvas size
         function adjustCanvasSize() {
             canvas.width = window.innerWidth * dpi;
             canvas.height = window.innerHeight * dpi;
@@ -25,10 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
         adjustCanvasSize();
         window.addEventListener('resize', function () {
             adjustCanvasSize();
-            if (!isMobile) init(); // Only reinitialize particles on non-mobile devices
+            if (!isMobile) init();
         });
 
-        // Particle Constructor
         function Particle(x, y, directionX, directionY, size, color) {
             this.x = x;
             this.y = y;
@@ -38,15 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
             this.color = color;
         }
 
-        // Draw method for particles
         Particle.prototype.draw = function () {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = '#e6e6e6'; // Light grey color for dots
+            ctx.fillStyle = '#e6e6e6';
             ctx.fill();
         };
 
-        // Update method for particles
         Particle.prototype.update = function () {
             if (!isMobile) {
                 if (this.x > canvas.width / dpi || this.x < 0) {
@@ -82,11 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
             this.draw();
         };
 
-        // Create particles
         function init() {
             particlesArray.length = 0;
             const numberOfParticles = isMobile
-                ? (canvas.width * canvas.height) / (27000 * dpi) // Fewer particles for mobile
+                ? (canvas.width * canvas.height) / (27000 * dpi)
                 : (canvas.width * canvas.height) / (9000 * dpi);
 
             for (let i = 0; i < numberOfParticles; i++) {
@@ -95,13 +89,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const y = Math.random() * (canvas.height / dpi - size * 2) + size;
                 const directionX = (Math.random() * 0.2) - 0.1;
                 const directionY = (Math.random() * 0.2) - 0.1;
-                const color = '#8c5523'; // Dark grey for lines
+                const color = '#8c5523';
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
 
-        // Connect particles with lines
         function connect() {
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
@@ -110,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                         const opacityValue = 1 - distance / 20000;
                         ctx.strokeStyle = `rgba(200, 200, 200, ${opacityValue})`;
-                        ctx.lineWidth = dpi > 1 ? 1.5 : 1; // Adjust line width for DPI
+                        ctx.lineWidth = dpi > 1 ? 1.5 : 1;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -120,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Animation loop
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width / dpi, canvas.height / dpi);
@@ -128,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
             connect();
         }
 
-        // Disable interaction on mobile
         if (!isMobile) {
             window.addEventListener('mousemove', function (event) {
                 mouse.x = event.clientX;
@@ -141,62 +132,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Sticky navigation on scroll
 window.addEventListener('scroll', function () {
     const header = document.querySelector('header');
     const banner = document.querySelector('.header-banner');
     const bannerLogo = document.querySelector('#banner-logo');
 
-    const maxHeaderHeight = 80; // Maximum height of the header
-    const minHeaderHeight = 50; // Minimum height of the header (same as banner height)
+    const maxHeaderHeight = 80;
+    const minHeaderHeight = 50;
 
-    // Get the scroll distance from the top
     const scrollY = window.scrollY;
 
-    // Calculate the new header height based on scroll position
     let newHeaderHeight = maxHeaderHeight - (scrollY / 10);
 
-    // Ensure the header height doesn't go below the minimum height
     if (newHeaderHeight <= minHeaderHeight) {
         newHeaderHeight = minHeaderHeight;
-        header.style.display = 'none'; // Hide the header when it's small enough
-        banner.style.display = 'block'; // Show the banner
-        bannerLogo.setAttribute('src', 'images/logo2.png'); // Change logo to logo2.png
+        header.style.display = 'none';
+        banner.style.display = 'block';
+        bannerLogo.setAttribute('src', 'images/logo2.png');
     } else {
-        header.style.display = 'flex'; // Show the header if it's larger than min height
-        banner.style.display = 'none'; // Hide the banner
+        header.style.display = 'flex';
+        banner.style.display = 'none';
         header.style.height = `${newHeaderHeight}px`;
     }
 });
 
-// Smooth scroll for in-page anchor links only
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
 
-        // Check if the link is an in-page anchor (starts with '#')
         if (href.startsWith('#')) {
             e.preventDefault();
             const target = document.querySelector(href);
             target.scrollIntoView({ behavior: 'smooth' });
         }
-        // For external links (different HTML pages), allow default behavior
     });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the header height
     const header = document.querySelector('header');
     const firstSection = document.querySelector('.section-first');
     
     if (header && firstSection) {
         const headerHeight = header.offsetHeight;
-        // Add padding to the first section based on the header height
-        firstSection.style.paddingTop = (headerHeight + 20) + 'px'; // Add 40px for extra space
+        firstSection.style.paddingTop = (headerHeight + 20) + 'px';
     }
 });
 
-// JavaScript for the hamburger menu
 document.querySelector('.hamburger').addEventListener('click', function() {
     document.querySelector('header').classList.toggle('nav-expanded');
 });
@@ -209,10 +190,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
 
-    if (hamburger && mobileMenu) { // Check if elements exist
+    if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active'); // Toggle the X animation
-            mobileMenu.classList.toggle('open'); // Toggle the visibility of the mobile menu
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
         });
     }
 });
@@ -224,10 +205,10 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Stop observing once visible
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+    }, { threshold: 0.25 });
 
     sections.forEach(section => {
         observer.observe(section);
@@ -242,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const heroProjects = document.getElementById("featured-projects");
     const projectTitles = document.querySelectorAll(".featured-project p");
 
-    // Helper function to add 'active' class with a delay
     function addActiveClass(element, delay) {
         if (element) {
             setTimeout(() => {
@@ -251,18 +231,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Trigger the hero section fade-in first
-    addActiveClass(heroSection, 0); // No delay for the hero section fade-in
+    addActiveClass(heroSection, 0);
 
-    // Trigger animations for hero elements in sequence
-    addActiveClass(heroHeading, 500); // Delay of 0.5s
-    addActiveClass(heroText, 1500); // Delay of 1.5s
-    addActiveClass(heroBtn, 1500); // Delay of 1.5s
-    addActiveClass(heroProjects, 2800); // Delay of 2.8s
+    addActiveClass(heroHeading, 500);
+    addActiveClass(heroText, 1500);
+    addActiveClass(heroBtn, 1500);
+    addActiveClass(heroProjects, 2800);
 
-    // Animate each project title
     projectTitles.forEach((title, index) => {
-        addActiveClass(title, 3100 + (index * 300)); // Staggered delay for each title
+        addActiveClass(title, 3100 + (index * 300));
     });
 });
 
@@ -289,30 +266,26 @@ document.addEventListener("DOMContentLoaded", function() {
     const hiddenElements = document.querySelectorAll(".hidden");
     const header = document.querySelector("header");
 
-    // IntersectionObserver to reveal hidden elements as they appear in the viewport
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                observer.unobserve(entry.target); // Stop observing once the element is visible
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        threshold: 0.25
     });
 
     hiddenElements.forEach(element => {
         observer.observe(element);
     });
 
-    // Check if on the home page (index page)
     if (window.location.pathname === "/" || window.location.pathname.endsWith("index.html")) {
-        // Add delay to fade in the header on the home page
         setTimeout(() => {
             header.classList.add("visible");
-        }, 2800); // Adjust the delay as needed
+        }, 2800);
     } else {
-        // Make the header static and fully visible on other pages
         header.classList.add("static");
     }
 });
